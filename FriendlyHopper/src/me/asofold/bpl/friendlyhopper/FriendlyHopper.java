@@ -1,8 +1,11 @@
 package me.asofold.bpl.friendlyhopper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,6 +46,9 @@ public class FriendlyHopper extends JavaPlugin implements Listener{
 	};
 	
 	private final List<BlockChecker> blockCheckers = new ArrayList<BlockChecker>();
+	
+	private final Set<Integer> checkIds = new HashSet<Integer>(Arrays.asList(
+			Material.TRAPPED_CHEST.getId(), Material.DROPPER.getId(), Material.HOPPER.getId()));
 
 	@Override
 	public void onDisable() {
@@ -113,6 +119,9 @@ public class FriendlyHopper extends JavaPlugin implements Listener{
 	 * @return True if checkBlock should be called for this block.
 	 */
 	public boolean shouldCheck(Block block){
+		if (checkIds.contains(block.getTypeId())){
+			return true;
+		}
 		if (block.getState() instanceof InventoryHolder){
 			return true;
 		}
