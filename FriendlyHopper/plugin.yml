@@ -1,0 +1,8 @@
+name: FriendlyHopper
+main: me.asofold.bpl.friendlyhopper.FriendlyHopper
+version: 0.0.0
+softdepend:
+- WorldEdit
+- WorldGuard
+- Lockette
+- ChestShop
