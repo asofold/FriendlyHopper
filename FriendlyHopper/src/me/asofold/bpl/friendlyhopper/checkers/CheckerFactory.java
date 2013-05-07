@@ -7,11 +7,12 @@ import java.util.List;
 import me.asofold.bpl.friendlyhopper.checkers.block.BlockChecker;
 import me.asofold.bpl.friendlyhopper.checkers.block.chestshop.ChestShopBlockChecker;
 import me.asofold.bpl.friendlyhopper.checkers.block.lockette.LocketteBlockChecker;
+import me.asofold.bpl.friendlyhopper.checkers.block.lwc.LWCBlockChecker;
 import me.asofold.bpl.friendlyhopper.checkers.block.worldguard.WorldGuardBlockChecker;
 
 public class CheckerFactory {
 	public Collection<BlockChecker> getAvailableBlockCheckers(){
-		List<BlockChecker> checkers = new LinkedList<BlockChecker>();
+		final List<BlockChecker> checkers = new LinkedList<BlockChecker>();
 		
 		try{
 			checkers.add(new WorldGuardBlockChecker());
@@ -25,6 +26,11 @@ public class CheckerFactory {
 		
 		try{
 			checkers.add(new LocketteBlockChecker());
+		}
+		catch (Throwable t){}
+		
+		try{
+			checkers.add(new LWCBlockChecker());
 		}
 		catch (Throwable t){}
 		
